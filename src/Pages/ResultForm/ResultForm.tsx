@@ -67,18 +67,18 @@ const ResultForm = ({ history }) => {
           <li>
             <OtherChat>종류는 뭘로 할래?</OtherChat>
           </li>
-          {chatList.map((message) => (
-            <>
+          {chatList.map((message, idx) => (
+            <React.Fragment key={idx}>
               <li>
                 <MyChat>{message[0]}</MyChat>
               </li>
               <li>
                 <OtherChat>{message[1]}</OtherChat>
               </li>
-            </>
+            </React.Fragment>
           ))}
-          {filteredFoodList.map((food) => (
-            <>
+          {filteredFoodList.map((food, idx) => (
+            <React.Fragment key={idx}>
               <li className="alignLeft">
                 <OtherChat>
                   그럼 오늘 점심으로{" "}
@@ -101,7 +101,7 @@ const ResultForm = ({ history }) => {
                   일치해!
                 </OtherChat>
               </li>
-            </>
+            </React.Fragment>
           ))}
         </ul>
       </ChatForm>
@@ -174,7 +174,7 @@ const ChatForm = styled.div`
   margin: 1.25em;
   padding: 1.25em 0;
   border-radius: 1.875em;
-  background-color: ${(props) => props.theme.lightGray};
+  background-color: ${({ theme }) => theme.lightGray};
   overflow: scroll;
 
   &::-webkit-scrollbar {

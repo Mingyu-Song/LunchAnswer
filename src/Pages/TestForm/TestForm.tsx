@@ -95,15 +95,15 @@ const TestForm = ({ history }) => {
           <li>
             <OtherChat>종류는 뭘로 할래?</OtherChat>
           </li>
-          {chatList.map((message) => (
-            <>
+          {chatList.map((message, idx) => (
+            <React.Fragment key={idx}>
               <li>
                 <MyChat>{message[0]}</MyChat>
               </li>
               <li>
                 <OtherChat isDelay={"1.15s"}>{message[1]}</OtherChat>
               </li>
-            </>
+            </React.Fragment>
           ))}
         </ul>
       </ChatForm>
@@ -167,15 +167,15 @@ const QuestionNav = styled.nav`
   padding: 2.25em 2em 1em;
 
   h1 {
-    font-family: ${(props) => props.theme.questionFont};
+    font-family: ${({ theme }) => theme.questionFont};
     font-size: 2.5em;
-    color: ${(props) => props.theme.mainOrange};
+    color: ${({ theme }) => theme.mainOrange};
   }
 
   p {
-    font-family: ${(props) => props.theme.mainFontBold};
+    font-family: ${({ theme }) => theme.mainFontBold};
     font-size: 0.875em;
-    color: ${(props) => props.theme.progressGray};
+    color: ${({ theme }) => theme.progressGray};
   }
 `;
 
@@ -192,11 +192,11 @@ const ResultNav = styled.nav`
 `;
 
 const ChatForm = styled.div`
-  height: ${(props) => (props.questionCount === 1 ? "12.188em" : "30em")};
+  height: ${({ questionCount }) => (questionCount === 1 ? "12.188em" : "30em")};
   margin: 1.25em;
   padding: 2.625em 0;
   border-radius: 1.875em;
-  background-color: ${(props) => props.theme.lightGray};
+  background-color: ${({ theme }) => theme.lightGray};
   overflow: scroll;
   scroll-behavior: smooth;
 
